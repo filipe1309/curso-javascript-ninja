@@ -183,7 +183,7 @@ pessoa.apresetacao = function() {
 	var nomeQtdIdade = (this.idade === 1) ? 'ano' : 'anos';
 	var nomeQtdMetros = (this.caminhouQuantosMetros === 1) ? 'metro' : 'metros';
 	
-  return "Olá, eu sou " + nomeArtigoSexo + " " + pessoa.nomeCompleto() 
+  return "Olá, eu sou " + nomeArtigoSexo + " " + pessoa.nome + " " + pessoa.sobrenome
   + ", tenho " + pessoa.idade + " " + nomeQtdIdade 
   + ", " + pessoa.altura 
   + ", meu peso é " + pessoa.peso 
