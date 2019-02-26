@@ -9,7 +9,7 @@ para o contrário.
 */
 var isTruthy = function (valor) {
   return !!valor;
-}
+};
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
 isTruthy();
@@ -19,7 +19,7 @@ isTruthy(0);
 isTruthy(null);
 isTruthy(-0);
 isTruthy(false);
-isTruthy(NaN) // false
+isTruthy(NaN);
 
 /*
 Invoque a função criada acima passando como parâmetro 10 valores `truthy`.
@@ -57,7 +57,7 @@ var carro = {
   quantasPortas: 4,
   assentos: 5,
   quantidadePessoas: 0
-}
+};
 
 /*
 Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor
@@ -135,37 +135,37 @@ retornar algum valor.
 
 Qual a cor atual do carro?
 */
-carro.obterCor() // "vermelho"
+carro.obterCor(); // "vermelho"
 
 // Mude a cor do carro para vermelho.
-carro.mudarCor("azul")
+carro.mudarCor("azul");
 
 // E agora, qual a cor do carro?
-carro.obterCor() // "azul"
+carro.obterCor(); // "azul"
 
 // Mude a cor do carro para verde musgo.
-carro.mudarCor("verde musgo")
+carro.mudarCor("verde musgo");
 
 // E agora, qual a cor do carro?
-carro.obterCor() // "verde musgo"
+carro.obterCor(); // "verde musgo"
 
 // Qual a marca e modelo do carro?
-carro.obterMarcaModelo() // "Esse carro é um Tesla Model S"
+carro.obterMarcaModelo(); // "Esse carro é um Tesla Model S"
 
 // Adicione 2 pessoas no carro.
-carro.addPessoas(2) // "Já temos 2 pessoas no carro!"
+carro.addPessoas(2); // "Já temos 2 pessoas no carro!"
 
 // Adicione mais 4 pessoas no carro.
-carro.addPessoas(4) // "Só cabem mais 3 pessoas!"
+carro.addPessoas(4); // "Só cabem mais 3 pessoas!"
 
 // Faça o carro encher.
-carro.addPessoas(3) // "Já temos 5 pessoas no carro!"
+carro.addPessoas(3); // "Já temos 5 pessoas no carro!"
 
 // Tire 4 pessoas do carro.
 carro.quantidadePessoas -= 4;
 
 // Adicione 10 pessoas no carro.
-carro.addPessoas(10) // "Só cabem mais 4 pessoas!"
+carro.addPessoas(10); // "Só cabem mais 4 pessoas!"
 
 // Quantas pessoas temos no carro?
 carro.quantidadePessoas; // 1
