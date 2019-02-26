@@ -136,13 +136,13 @@ retornar algum valor.
 
 Qual a cor atual do carro?
 */
-carro.obterCor(); // "vermelho"
+carro.obterCor(); // "azul"
 
 // Mude a cor do carro para vermelho.
-carro.mudarCor("azul");
+carro.mudarCor("vermelho");
 
 // E agora, qual a cor do carro?
-carro.obterCor(); // "azul"
+carro.obterCor(); // "vermelho"
 
 // Mude a cor do carro para verde musgo.
 carro.mudarCor("verde musgo");
