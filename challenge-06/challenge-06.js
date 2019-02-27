@@ -71,36 +71,38 @@ Crie uma função chamada `convertToHex`, com as seguintes características:
     a frase:
     "Não temos o equivalente hexadecimal para [COR]."
 */
-function convertToHex(cor) {
-  switch (cor) {
+function convertToHex(color) {
+  var hexa;
+  switch (color) {
     case 'red':
-      return 'O hexadecimal para a cor ' + cor + ' é #FF0000.';
+      hexa = '#FF0000';
       break;
     case 'green':
-      return 'O hexadecimal para a cor ' + cor + ' é #00FF00.';
+      hexa = '#00FF00';
       break;
     case 'blue':
-      return 'O hexadecimal para a cor ' + cor + ' é #0000FF.';
+      hexa = '#0000FF';
       break;
     case 'black':
-      return 'O hexadecimal para a cor ' + cor + ' é #000000.';
+      hexa = '#000000';
       break;
     case 'white':
-      return 'O hexadecimal para a cor ' + cor + ' é #FFFFFF.';
+      hexa = '#FFFFFF';
       break;
     default:
-      return 'Não temos o equivalente hexadecimal para ' + cor + '.'
+      return 'Não temos o equivalente hexadecimal para ' + color + '.';
   }
+  return 'O hexadecimal para a cor ' + color + ' é ' + hexa + '.';
 }
 
 /*
 Tente mostrar o hexadecimal de 8 cores diferentes usando a função criada acima.
 */
-convertToHex('red') // "O hexadecimal para a cor red é #FF0000."
-convertToHex('green') // "O hexadecimal para a cor green é #00FF00."
-convertToHex('blue') // "O hexadecimal para a cor blue é #0000FF."
-convertToHex('black') // "O hexadecimal para a cor black é #000000."
-convertToHex('white') // "O hexadecimal para a cor white é #FFFFFF."
-convertToHex('yellow') // "Não temos o equivalente hexadecimal para yellow."
-convertToHex('orange') // "Não temos o equivalente hexadecimal para orange."
-convertToHex('gray') // "Não temos o equivalente hexadecimal para gray."
+convertToHex('red'); // "O hexadecimal para a cor red é #FF0000."
+convertToHex('green'); // "O hexadecimal para a cor green é #00FF00."
+convertToHex('blue'); // "O hexadecimal para a cor blue é #0000FF."
+convertToHex('black'); // "O hexadecimal para a cor black é #000000."
+convertToHex('white'); // "O hexadecimal para a cor white é #FFFFFF."
+convertToHex('yellow'); // "Não temos o equivalente hexadecimal para yellow."
+convertToHex('orange'); // "Não temos o equivalente hexadecimal para orange."
+convertToHex('gray'); // "Não temos o equivalente hexadecimal para gray."
