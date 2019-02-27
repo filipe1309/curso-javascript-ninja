@@ -74,10 +74,7 @@ function book(livro) {
     },
   };
   
-  if (livro !== undefined) {
-   return livros[livro];
-  }
-  return livros;
+  return !livro ? livros : livros[livro];
 }
 
 /*
