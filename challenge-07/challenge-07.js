@@ -44,9 +44,7 @@ pares entre 10 e 20, inclusive esses 2.
 console.log( 'Números pares entre 10 e 20:' );
 counter = 10;
 while(counter <= 20) {
-  if ((counter % 2) === 0) {
-    console.log(counter);
-  }
+  ((counter % 2) === 0) ? console.log(counter) : '';
   counter++;
 }
 
@@ -76,7 +74,7 @@ for(var counter = 100; counter <= 120; counter++) {
 }
 
 console.log( 'Números ímpares entre 111 e 125:' );
-for(var counter = 100; counter <= 120; counter++) {
+for(var counter = 111; counter <= 125; counter++) {
   if (counter % 2) {
     console.log(counter);
   }
