@@ -45,7 +45,7 @@
   - O desafio é fazer o retorno sem usar "if" ou "switch".
   */
   function isOperatorValid(operator) {
-    return Boolean(operation[operator]);
+    return !!operation[operator]; // Boolean(operation[operator]);
   }
 
   /*
