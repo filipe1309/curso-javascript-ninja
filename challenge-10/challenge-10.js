@@ -127,8 +127,11 @@
   */
   
   if (sum) {
+    number1 = 5;
+    number2 = 10;
     console.log(showOperationMessage(operationSignal, number1, number2), sum(number1, number2));
-  } else {
+  } 
+  else {
     showErrorMessage(operationSignal);
   }
 
@@ -140,6 +143,8 @@
   operationSignal = '-';
   var subtraction = calculator(operationSignal);
   if (subtraction) {
+    number1 = 15;
+    number2 = 8;
     console.log(showOperationMessage(operationSignal, number1, number2), subtraction(number1, number2));
   } else {
     showErrorMessage(operationSignal);
@@ -148,6 +153,8 @@
   operationSignal = '*';
   var multiplication = calculator(operationSignal);
   if (multiplication) {
+    number1 = 2;
+    number2 = 9;
     console.log(showOperationMessage(operationSignal, number1, number2), multiplication(number1, number2));
   } else {
     showErrorMessage(operationSignal);
@@ -156,6 +163,8 @@
   operationSignal = '/';
   var division = calculator(operationSignal);
   if (division) {
+    number1 = 16;
+    number2 = 8;
     console.log(showOperationMessage(operationSignal, number1, number2), division(number1, number2));
   } else {
     showErrorMessage(operationSignal);
@@ -164,6 +173,8 @@
   operationSignal = '%';
   var mod = calculator(operationSignal);
   if (mod) {
+    number1 = 17;
+    number2 = 9;
     console.log(showOperationMessage(operationSignal, number1, number2), mod(number1, number2));
   } else {
     showErrorMessage(operationSignal);
@@ -176,6 +187,8 @@
   operationSignal = '$';
   var cifrao = calculator(operationSignal);
   if (cifrao) {
+    number1 = 12;
+    number2 = 3;
     console.log(showOperationMessage(operationSignal, number1, number2), cifrao(number1, number2));
   } else {
     showErrorMessage(operationSignal);
