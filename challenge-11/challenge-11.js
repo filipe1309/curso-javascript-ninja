@@ -36,7 +36,7 @@
   'The person has [COUNTER] properties'
   */
   var counter = 0;
-  for (prop in person) {
+  for (var prop in person) {
     counter++;
     console.log('The ' + prop + ' of person is ' + person[prop]);
   }
@@ -50,7 +50,7 @@
   'The person has more than 25 years old? [TRUE/FALSE]'
   */
   function moreThan(ageValue) {
-    return ageValue < person.age
+    return person.age > ageValue;
   }
 
   console.log('The person has more than 25 years old?', moreThan(25));
