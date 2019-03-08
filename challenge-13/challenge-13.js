@@ -31,8 +31,9 @@
   Adicione 3 novos estados da região Norte no início do array e mostre no console.
   */
   console.log( '\nMais estados adicionados:' );
-  console.log(brasil.unshift('Amapa', 'Amazonas', 'Para'));
-
+  brasil.unshift('Amapa', 'Amazonas', 'Para');
+  console.log(brasil);
+    
   /*
   Remova o primeiro estado do array `brasil` e mostre-o no console.
   */
@@ -60,7 +61,17 @@
   /*
   Crie um novo array chamado `nordeste`, que tenha os estados do nordeste.
   */
-  var nordeste = ['Alagoas', 'Bahia', 'Ceara', 'Maranhao', 'Paraiba', 'Pernambuco', 'Piaui', 'Rio Grande do Norte', 'Sergipe'];
+  var nordeste = [
+    'Alagoas', 
+    'Bahia', 
+    'Ceara', 
+    'Maranhao', 
+    'Paraiba', 
+    'Pernambuco', 
+    'Piaui', 
+    'Rio Grande do Norte', 
+    'Sergipe'
+  ];
 
   /*
   Mostre no console os estados do nordeste.
@@ -72,7 +83,7 @@
   Remova de `brasil` os estados do `sudeste`, colocando-os em uma variável
   chamada `newSudeste`.
   */
-  var newSudeste = brasil.splice(5, 4);
+  var newSudeste = brasil.splice(5); // do indice 5 ate o final
 
   /*
   Adicione os estados do `nordeste` ao array `brasil`. Esses estados devem
@@ -121,7 +132,11 @@
   var todosMaiorQue7 = brasil.every(function(item) {
     return item.length > 7;
   });
-  console.log(todosMaiorQue7 ? 'Sim, todos os estados tem mais de 7 letras!' : 'Nem todos os estados tem mais de 7 letras!');
+  console.log(
+    todosMaiorQue7 
+    ? 'Sim, todos os estados tem mais de 7 letras!' 
+    : 'Nem todos os estados tem mais de 7 letras!'
+  );
 
   /*
   Percorra o array `brasil` e verifique se o Ceará está incluído, atribuindo o
@@ -135,7 +150,11 @@
   var existeCeara = brasil.some(function(item) {
     return item === 'Ceara';
   });
-  console.log(existeCeara ? 'Ceará está incluído!' : 'Ceará não foi incluído :(');
+  console.log(
+    existeCeara 
+    ? 'Ceará está incluído!' 
+    : 'Ceará não foi incluído :('
+  );
 
   /*
   Percorra o array `newBrasil` e crie um novo array que some 1 no ID de cada
