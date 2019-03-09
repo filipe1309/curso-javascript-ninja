@@ -112,7 +112,8 @@
   );
   console.log('O metodo indexOf() utiliza comparacao estrita (===),' 
     + 'mas quando se trata de objetos, isto nao funciona, ' 
-    + 'pois dois objetos sao iguais somente se eles se referirem a exatamente o mesmo objeto'
+    + 'pois dois objetos sao iguais somente se eles se referirem a exatamente o mesmo objeto, '
+    + 'ou  seja, nao se referem a mesma parte na memoria' 
    );
 
   /*
@@ -121,7 +122,7 @@
   */
   console.log( '\nE buscando a partir do último índice, o { number: 2 } existe?' );
   console.log(
-    numberObjects.lastIndexOf({number: 2}) > -1 
+    numberObjects.lastIndexOf({number: 2}, 2) > -1 
     ? 'Existe um objeto { number: 2 } em numberObjects!'
     : 'Não existe um objeto { number: 2 } em numberObjects :('
   );
