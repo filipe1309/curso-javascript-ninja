@@ -23,7 +23,22 @@
       adicionados à idade original (age). Esse método deverá retornar o objeto
       que será instanciado.
     */
-    // ?
+    function Person(name, lastName, age) {
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        
+        this.getFullName = function() {
+            return this.name + ' ' + this.lastName;
+        };
+        this.getAge = function() {
+            return this.age;
+        };
+        this.addAge = function() {
+            this.age += arguments[0];
+            return this;
+        }
+    }
     
     /*
     Crie 3 novos objetos usando o construtor acima. Os objetos serão novas
@@ -32,20 +47,30 @@
     Mostre as 3 novas pessoas criadas no console (Um console.log por pessoa).
     */
     console.log( 'Novas pessoas criadas à partir de Person:' );
-    // ?
+    var john = new Person('John', 'Doe', 40);
+    var bob = new Person('Bob', 'Dylan', 14);
+    var douglas = new Person('Douglas', 'Adams', 47);
+    
+    console.log(john);
+    console.log(bob);
+    console.log(douglas);
     
     /*
     Mostre no console o nome completo de cada pessoa.
     */
     console.log( '\nNomes das pessoas:' );
-    // ?
+    console.log(john.getFullName());
+    console.log(bob.getFullName());
+    console.log(douglas.getFullName());
     
     /*
     Mostre no console as idades de cada pessoa, com a frase:
     - "[NOME COMPLETO] tem [IDADE] anos."
     */
     console.log( '\nIdade das pessoas:' );
-    // ?
+    console.log(john.getFullName() + ' tem ' + john.getAge() + ' anos.');
+    console.log(bob.getFullName() + ' tem ' + bob.getAge() + ' anos.');
+    console.log(douglas.getFullName() + ' tem ' + douglas.getAge() + ' anos.');
     
     /*
     Adicione alguns anos à cada pessoa, e mostre no console a nova idade de
@@ -53,6 +78,11 @@
     - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
     */
     console.log( '\nNova idade das pessoas:' );
-    // ?
+    john.addAge(5);
+    bob.addAge(1);
+    douglas.addAge(10);
+    console.log(john.getFullName() + ' agora tem ' + john.getAge() + ' anos.');
+    console.log(bob.getFullName() + ' agora tem ' + bob.getAge() + ' anos.');
+    console.log(douglas.getFullName() + ' agora tem ' + douglas.getAge() + ' anos.');
     
 })();
