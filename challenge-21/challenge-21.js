@@ -22,26 +22,25 @@
     var $buttonStart = document.querySelector('button[data-js="start"]');
     var $buttonStop = document.querySelector('button[data-js="stop"]');
     var $buttonReset = document.querySelector('button[data-js="reset"]');
-    var counter = 0;
     var temporizer;
     
-    function timer() {
-        $timer.value = counter++;
-        temporizer = setTimeout(timer, 1000);
+    $buttonStart.addEventListener('click', startTimer, false);
+    $buttonStop.addEventListener('click', stopTimer, false);
+    $buttonReset.addEventListener('click', resetTimer, false);
+    
+    function startTimer() {
+        // O + unario converte para integer
+        $timer.value = +$timer.value + 1;
+        temporizer = setTimeout(startTimer, 1000);
     }
     
-    $buttonStart.addEventListener('click', function() {
-        timer();
-    }, false);
-    
-    
-    $buttonStop.addEventListener('click', function() {
+    function stopTimer() {
         clearTimeout(temporizer);
-    }, false);
+    }
     
+    function resetTimer() {
+        $timer.value = 0;
+        stopTimer();
+    }
     
-    $buttonReset.addEventListener('click', function() {
-        $timer.value = counter = 0;
-        clearTimeout(temporizer);
-    }, false);
 })();
