@@ -45,7 +45,7 @@
     function sum() {
         console.log(arguments);
         return Array.prototype.reduce.call(arguments, function (accumulator, currentValue) {
-            return +accumulator + +currentValue;
+            return +accumulator + Number(currentValue);
         });
     }
     
@@ -79,7 +79,7 @@
     */
     console.log( '\nFunção que limpa entrada do usuário (somente números):' );
     function justNumbers(str) {
-        return str.match(/\d/g);
+        return str.match(/\d+/g);
     }
     
     console.log(justNumbers.toString());
