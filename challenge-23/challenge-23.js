@@ -34,10 +34,10 @@
     var inputVisor = doc.querySelector('[data-js="visor"]');
     
     var operations = {
-        '+': function(op1, op2) { return +op1 + +op2; },
-        '-': function(op1, op2) { return +op1 - +op2; },
-        '*': function(op1, op2) { return +op1 * +op2; },
-        '/': function(op1, op2) { return +op1 / +op2; }
+        '+': function(op1, op2) { return op1 + op2; },
+        '-': function(op1, op2) { return op1 - op2; },
+        '*': function(op1, op2) { return op1 * op2; },
+        '/': function(op1, op2) { return op1 / op2; }
     };
     
     function incrementVisor() {
@@ -45,7 +45,7 @@
     }
     
     function clearVisor() {
-        inputVisor.value = '';
+        inputVisor.value = 0;
     }
     
     function calculateResult() {
@@ -53,7 +53,7 @@
         var visorNumbers = inputVisor.value.match(/\d+/g);
         var visorOps = inputVisor.value.match(/\D+/g);
         inputVisor.value = visorNumbers.reduce(function(accumulator, currentValue) {
-            return operations[visorOps.shift()](accumulator, currentValue);
+            return operations[visorOps.shift()](+accumulator, +currentValue);
         });
     }
     
@@ -81,6 +81,7 @@
     
     $buttonsOp.forEach(function(item) {
         item.addEventListener('click', function() {
+            console.log('clicou no op', this.value);
             inputVisor.value = adjustVisor(inputVisor.value);
             incrementVisor.call(this);
         }, false);
