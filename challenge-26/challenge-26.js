@@ -29,7 +29,7 @@
     
     this.on = function (event, callback) {
       Array.prototype.forEach.call(this.element, function(nodeItem) {
-        nodeItem.addEventListener(event, callback);
+        nodeItem.addEventListener(event, callback, false);
       });
     }
     
@@ -38,16 +38,17 @@
         nodeItem.removeEventListener(event, callback);
       });
     }
-    
-    this.get = function () {
-      return this.element;
-    }
+  }
+  
+  DOM.prototype.get = function () {
+    return this.element;
   }
   
   var $a = new DOM('[data-js="link"]');
-  $a.on('click', function(e) {
+  $a.on('click', function handleClick(e) {
     e.preventDefault();
     console.log('clicou');
+    $a.off('click', handleClick);
   });
   
   console.log('Elementos selecionados:', $a.get());
