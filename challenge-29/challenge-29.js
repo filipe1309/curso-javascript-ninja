@@ -1,4 +1,4 @@
-(function() {
+(function(win, doc) {
   'use strict';
 
   /*
@@ -36,4 +36,69 @@
   que será nomeado de "app".
   */
 
-})();
+  function app() {
+    var $carrosTable = new DOM('table');
+    var $marca_modelo = new DOM('[data-js="marca_modelo"]');
+    var $ano = new DOM('[data-js="ano"]');
+    var $placa = new DOM('[data-js="placa"]');
+    var $cor = new DOM('[data-js="cor"]');
+    var $img_url = new DOM('[data-js="img_url"]');
+    var $cadastrarButton = new DOM('[type="submit"]');
+    var ajax = new XMLHttpRequest();
+    
+    ajax.open('GET', 'company.json');
+    ajax.send();
+    
+    function fillCompany(companyJson) {
+      /* global DOM */
+      var $name = new DOM('[data-js="empresa_nome"]');
+      var $phone = new DOM('[data-js="empresa_telefone"]');
+      
+      $name.element[0].textContent = companyJson.name;
+      $phone.element[0].textContent = companyJson.phone;
+    }
+    
+    function handleReadyStateChange() {
+      if (ajax.status === 200 && ajax.readyState === 4) {
+        var json = JSON.parse(ajax.responseText);
+        fillCompany(json);
+      }
+    }
+    
+    function handleClickSubmitButton(event) {
+      event.preventDefault();
+      var tr = doc.createElement('tr');
+      
+      var td_marca_modelo = doc.createElement('td');
+      var marca_modelo = doc.createTextNode($marca_modelo.get()[0].value);
+      td_marca_modelo.appendChild(marca_modelo);
+      var td_ano = doc.createElement('td');
+      var ano = doc.createTextNode($ano.get()[0].value);
+      td_ano.appendChild(ano);
+      var td_placa = doc.createElement('td');
+      var placa = doc.createTextNode($placa.get()[0].value);
+      td_placa.appendChild(placa);
+      var td_cor = doc.createElement('td');
+      var cor = doc.createTextNode($cor.get()[0].value);
+      td_cor.appendChild(cor);
+      var td_img_url = doc.createElement('td');
+      var img_url = doc.createTextNode($img_url.get()[0].value);
+      td_img_url.appendChild(img_url);
+      
+      tr.appendChild(td_marca_modelo);
+      tr.appendChild(td_ano);
+      tr.appendChild(td_placa);
+      tr.appendChild(td_cor);
+      tr.appendChild(td_img_url);
+      
+      $carrosTable.get()[0].appendChild(tr);
+    }
+  
+    ajax.addEventListener('readystatechange', handleReadyStateChange, false);
+    $cadastrarButton.on('click', handleClickSubmitButton);
+  }
+
+  win.app = app;
+  app();
+
+})(window, document);
