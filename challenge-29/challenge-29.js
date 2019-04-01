@@ -1,4 +1,4 @@
-(function(win, doc) {
+(function(win, doc, DOM) {
   'use strict';
 
   /*
@@ -36,69 +36,99 @@
   que será nomeado de "app".
   */
 
-  function app() {
-    var $carrosTable = new DOM('table');
-    var $marca_modelo = new DOM('[data-js="marca_modelo"]');
-    var $ano = new DOM('[data-js="ano"]');
-    var $placa = new DOM('[data-js="placa"]');
-    var $cor = new DOM('[data-js="cor"]');
-    var $img_url = new DOM('[data-js="img_url"]');
-    var $cadastrarButton = new DOM('[type="submit"]');
-    var ajax = new XMLHttpRequest();
+  var app = (function () {
     
-    ajax.open('GET', 'company.json');
-    ajax.send();
-    
-    function fillCompany(companyJson) {
-      /* global DOM */
-      var $name = new DOM('[data-js="empresa_nome"]');
-      var $phone = new DOM('[data-js="empresa_telefone"]');
+    return {
+      init: function init() {
+        //var $cadastrarButton = new DOM('[type="submit"]');
+        
+        this.companyInfo();
       
-      $name.element[0].textContent = companyJson.name;
-      $phone.element[0].textContent = companyJson.phone;
-    }
-    
-    function handleReadyStateChange() {
-      if (ajax.status === 200 && ajax.readyState === 4) {
-        var json = JSON.parse(ajax.responseText);
-        fillCompany(json);
+      },
+      
+      initEvents: function initEvents() {
+        DOM('[type="submit"]').on('click', this.handleClickSubmitButton);
+      },
+      
+      handleClickSubmitButton: function handleClickSubmitButton(event) {
+        event.preventDefault();
+        var $carrosTable = new DOM('table > tbody').get();
+        $carrosTable.appendChild(app.createNewcar());
+      },
+      
+      createNewcar: function createNewcar() {
+        var $fragment = doc.createDocumentFragment();
+      
+        
+        var $marca_modelo = new DOM('[data-js="marca_modelo"]').get();
+        var $ano = new DOM('[data-js="ano"]').get();
+        var $placa = new DOM('[data-js="placa"]').get();
+        var $cor = new DOM('[data-js="cor"]').get();
+        var $img_url = new DOM('[data-js="img_url"]').get();
+        
+        var tr = doc.createElement('tr');
+        
+        var td_marca_modelo = doc.createElement('td');
+        var td_ano = doc.createElement('td');
+        var td_placa = doc.createElement('td');
+        var td_cor = doc.createElement('td');
+        var td_img_url = doc.createElement('td');
+        var $image = doc.createElement('img'); 
+
+        td_marca_modelo.textContent = $marca_modelo.value;
+        td_ano.textContent = $ano.value;
+        td_placa.textContent = $placa.value;
+        
+        var cor = doc.createTextNode($cor.value);
+        td_cor.appendChild(cor);
+        
+        $image.setAttribute('src', $img_url.value);
+        td_img_url.appendChild($image);
+        
+        tr.appendChild(td_marca_modelo);
+        tr.appendChild(td_ano);
+        tr.appendChild(td_placa);
+        tr.appendChild(td_cor);
+        tr.appendChild(td_img_url);
+        
+        return $fragment.appendChild(tr);
+      },
+      
+      companyInfo: function companyInfo() {
+        var ajax = new XMLHttpRequest();
+      
+        ajax.open('GET', 'company.json', true);
+        ajax.send();
+        
+        ajax.addEventListener('readystatechange', this.handleReadyStateChange, false);
+      
+      },
+      
+      handleReadyStateChange: function handleReadyStateChange() {
+        if (app.isReady.call(this)) {
+          var json = JSON.parse(this.responseText);
+          app.fillCompany.call(this, json);
+        }
+      },
+      
+      isReady: function isReady() {
+        return this.readyState === 4 && this.status === 200;
+      },
+      
+      fillCompany: function fillCompany(companyJson) {
+        /* global DOM */
+        var $name = DOM('[data-js="empresa_nome"]').get();
+        var $phone = DOM('[data-js="empresa_telefone"]').get();
+      
+        $name.textContent = companyJson.name;
+        $phone.textContent = companyJson.phone;
       }
     }
     
-    function handleClickSubmitButton(event) {
-      event.preventDefault();
-      var tr = doc.createElement('tr');
-      
-      var td_marca_modelo = doc.createElement('td');
-      var marca_modelo = doc.createTextNode($marca_modelo.get()[0].value);
-      td_marca_modelo.appendChild(marca_modelo);
-      var td_ano = doc.createElement('td');
-      var ano = doc.createTextNode($ano.get()[0].value);
-      td_ano.appendChild(ano);
-      var td_placa = doc.createElement('td');
-      var placa = doc.createTextNode($placa.get()[0].value);
-      td_placa.appendChild(placa);
-      var td_cor = doc.createElement('td');
-      var cor = doc.createTextNode($cor.get()[0].value);
-      td_cor.appendChild(cor);
-      var td_img_url = doc.createElement('td');
-      var img_url = doc.createTextNode($img_url.get()[0].value);
-      td_img_url.appendChild(img_url);
-      
-      tr.appendChild(td_marca_modelo);
-      tr.appendChild(td_ano);
-      tr.appendChild(td_placa);
-      tr.appendChild(td_cor);
-      tr.appendChild(td_img_url);
-      
-      $carrosTable.get()[0].appendChild(tr);
-    }
+  })();
   
-    ajax.addEventListener('readystatechange', handleReadyStateChange, false);
-    $cadastrarButton.on('click', handleClickSubmitButton);
-  }
-
   win.app = app;
-  app();
+  app.init();
+  app.initEvents();
 
-})(window, document);
+})(window, document, window.DOM);

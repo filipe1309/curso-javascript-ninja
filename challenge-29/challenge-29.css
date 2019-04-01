@@ -8,7 +8,7 @@ header {
 
 form, table {
     float: left;
-    width: 50%;
+    width: 40%;
 }
 
 input {
@@ -36,4 +36,9 @@ table {
 td, th {
     padding:  5px 15px;
     border: 1px solid #ccc;
+}
+
+img {
+    max-width: 200px;
+    height: auto;
 }

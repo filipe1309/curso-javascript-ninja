@@ -35,6 +35,9 @@
   // API DOM
   
   function DOM(nodeSelector) {
+    if (!(this instanceof DOM))
+      return new DOM(nodeSelector);
+    
       this.element = doc.querySelectorAll(nodeSelector);
       
       this.on = function (event, callback) {
@@ -48,10 +51,15 @@
           nodeItem.removeEventListener(event, callback);
         });
       }
+      
+      /*if (this.element.length === 1)
+        return this.get();*/
   }
   
-  DOM.prototype.get = function () {
-    return this.element;
+  DOM.prototype.get = function (index) {
+    if (!index)
+      return this.element[0];
+    return this.element[index];
   }
   
   DOM.prototype.forEach = function (callback) {
